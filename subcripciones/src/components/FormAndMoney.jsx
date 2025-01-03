@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const FormAddMoney = ({ setCount }) => {
+export const FormAddMoney = ({ setCount, setIsValid }) => {
   const [input, setInput] = useState("");
   const [error, setError] = useState(false);
 
@@ -12,6 +12,7 @@ export const FormAddMoney = ({ setCount }) => {
     }
     setError(false);
     setCount(Number(input));
+    setIsValid(true);
   };
 
   const handleInputChange = (e) => {
@@ -21,7 +22,6 @@ export const FormAddMoney = ({ setCount }) => {
   return (
     <div className="form-add-money">
       <form onSubmit={handleForm}>
-        {input}
         <p>Agregar presupuesto</p>
         <input type="number" placeholder="300$" onChange={handleInputChange} />
         <input type="submit" value="Agregar" />
