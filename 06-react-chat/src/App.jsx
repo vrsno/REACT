@@ -1,7 +1,14 @@
 import "./App.css";
+import { Chat } from "./components/Chat";
+import { User } from "./components/User";
 
 function App() {
-  return <></>;
+  return (
+    <div>
+      <User />
+      <Chat />
+    </div>
+  );
 }
 
 export default App;
