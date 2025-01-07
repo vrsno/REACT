@@ -4,7 +4,7 @@ import { User } from "./components/User";
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <User />
       <Chat />
     </div>

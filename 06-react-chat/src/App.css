@@ -9,7 +9,7 @@
   /* Chat Section */
   .chat-content {
     background-color: #F3F6FB;
-    width: 70%;
+    width: 60%;
     margin: 0 auto;
     border-radius: 25px;
     padding: 39px;
@@ -206,7 +206,8 @@
   .open {
     display: block;
     position: absolute;
-    top: -347px;
+    top: -210px;
+    min-height: 200px;
   }
   .close {
     display: none;

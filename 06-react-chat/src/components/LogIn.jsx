@@ -3,9 +3,10 @@ import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 export const LogIn = () => {
-  let [user] = useAuthState(auth);
-  console.log(user);
+  const [user] = useAuthState(auth);
   console.log(auth);
+
+  console.log(user);
 
   const googleLogin = () => {
     const provider = new GoogleAuthProvider();
