@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 
-export const useFetch = () => {
+export const useFetch = (query) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const TOKEN_AUTH =
-    "BQBB2H7LzPG5JD8EDTXevjdishSlhE1lbPD_3c2YbGY8IoU2GuL_n3eNKYQBXR5XTahEQDabfTLfu7ioBi34m4Uakjyb6T33hGmiJtAduMhOvRkGYzw";
+    "BQAIt3uSC24PRsYeGnTIpxfa9U7Mhyz3_rAsVVA4KAM3s2WwADew7fVYfOtYFlBruWd7ok1Jxr7EM1h0LNfSC9qN2uHjT3IhLiWRonYjOZBI6evi3EQ";
 
-  const query = "bad bunny";
   const url = `https://api.spotify.com/v1/search?q=${encodeURIComponent(
     query
   )}&type=track&limit=15`;
@@ -24,15 +23,16 @@ export const useFetch = () => {
           },
         });
         const responseJson = await response.json();
-        setData(responseJson.tracks.items); // Asegúrate de acceder a los items correctamente
+        setData(responseJson.tracks.items); // acceder a los items correctamente
       } catch (error) {
         console.log(error);
       } finally {
         setLoading(false);
       }
     };
-
-    fetchData();
+    if (query) {
+      fetchData();
+    }
   }, [url]); // Dependencia de `url` para que recargue cuando cambie
 
   return { data, loading };

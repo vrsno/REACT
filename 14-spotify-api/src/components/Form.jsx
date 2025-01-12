@@ -1,15 +1,19 @@
 import { useState } from "react";
 
-export const Form = () => {
+export const Form = ({ setQuery }) => {
   const [valueInput, setValueInput] = useState("");
   console.log(valueInput);
+  // es mejor hacer una sola funcion como la siguiente
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  };
-
-  const handleBtnSubmit = () => {
-    setValueInput(valueInput);
+    if (valueInput.trim()) {
+      // Asegúrate de que no sea vacío no va a ser ya que el state esta definido por defecto
+      setQuery(valueInput); // Actualiza el estado del componente padre
+    }
   };
 
   return (
@@ -24,9 +28,7 @@ export const Form = () => {
         onChange={(e) => setValueInput(e.target.value)}
         value={valueInput}
       />
-      <button type="button" onClick={handleBtnSubmit}>
-        Buscar
-      </button>
+      <button type="submit">Buscar</button>
     </form>
   );
 };
