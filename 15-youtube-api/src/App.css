@@ -1,0 +1,8 @@
+.hover-bg-light:hover{
+    background-color: #ededed;
+}
+
+.scroll-container::-webkit-scrollbar {
+     width: 6px; /* Ancho de la barra de desplazamiento vertical */
+    height: 6px; /* Altura de la barra de desplazamiento horizontal */
+  }
