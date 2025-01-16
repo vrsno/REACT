@@ -1,19 +1,15 @@
+import { Main } from "./Main";
+
 export const HamMenu = () => {
   return (
     <section
-      className=""
-      style={{
-        maxHeight: "94vh",
-        maxWidth: "200px",
-        overflowY: "scroll",
-        overflowX: "hidden",
-        scrollbarWidth: "thin",
-      }}
+      className="sticky-top d-flex mt-5"
+      style={{ overflow: "hidden", position: "relative", top: "0" }}
     >
-      <div className="navbar d-flex flex-direction-column gap-3">
+      <div className=" scroll-container navbar d-flex flex-direction-column gap-3">
         <ul className="navbar-nav w-100  me-2">
           <li className="nav-item ">
-            <h2 className="hover-bg-light h6 p-2 p-2 border-pill">Principal</h2>
+            <h2 className="hover-bg-light h6 p-2 border-pill">Principal</h2>
           </li>
           <li className="nav-item">
             <h2 className="hover-bg-light h6 p-2">Shorts</h2>
@@ -82,6 +78,7 @@ export const HamMenu = () => {
           <li className="nav-item">Configuracion</li>
         </ul>
       </div>
+      <Main />
     </section>
   );
 };

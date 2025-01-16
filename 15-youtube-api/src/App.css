@@ -2,7 +2,13 @@
     background-color: #ededed;
 }
 
-.scroll-container::-webkit-scrollbar {
-     width: 6px; /* Ancho de la barra de desplazamiento vertical */
-    height: 6px; /* Altura de la barra de desplazamiento horizontal */
+.scroll-container {
+     scrollbar-width: thin;
+     max-height: 94vh;
+     min-width: 10vw;
   }
+
+.scroll-container:hover{
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
