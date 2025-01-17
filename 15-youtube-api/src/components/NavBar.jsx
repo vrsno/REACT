@@ -1,6 +1,6 @@
 export const NavBar = () => {
   return (
-    <nav className=" p-2 navbar navbar-expand-sm d-flex flex-sm-row  justify-content-between align-items-center bg-primary">
+    <nav className=" p-2 navbar navbar-expand-sm d-flex flex-sm-row  justify-content-between align-items-center">
       <ul className="navbar-nav d-flex align-items-center justify-content-center">
         <li
           className="navbar-item me-3  d-none d-lg-block"

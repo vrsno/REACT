@@ -2,10 +2,7 @@ import { Main } from "./Main";
 
 export const HamMenu = () => {
   return (
-    <section
-      className="sticky-top d-flex mt-5"
-      style={{ overflow: "hidden", position: "relative", top: "0" }}
-    >
+    <section className=" d-flex mt-5" style={{ overflow: "hidden" }}>
       <div className=" scroll-container navbar d-flex flex-direction-column gap-3">
         <ul className="navbar-nav w-100  me-2">
           <li className="nav-item ">
