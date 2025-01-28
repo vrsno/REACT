@@ -1,8 +1,37 @@
-# React + Vite
+Escribe las soluciones en el archivo `solutions/index.js` manteniendo el nombre de las funciones y sus `export`. Usa `EsModules` en tu proyecto de Node.js
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1- arregla esta funcion par que le codigo posterior funcione como se espera:
 
-Currently, two official plugins are available:
+```javascript
+import net from "node:net";
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+export const ping = (ip) => {
+  const startTime = process.hrtime();
+
+  const client = net.connect({ port: 80, host: ip }, () => {
+    client.end();
+    return { time: process.hrtime(startTime), ip };
+  });
+
+  client.on("error", (err) => {
+    throw err;
+    client.end();
+  });
+
+  ping("midu.dev", (err, info) => {
+    if (err) console.log(err);
+    console.log(info);
+  });
+};
+```
+
+2- transforma la siguiente funcion para que funcione con promesas en lugar de callbacks
+
+```javascript
+export function obtenerDatosPersonales(callback) {
+    setTimeout(()=>{
+        callback(null: {data: 'datos importantes'})
+    }, 2000)
+}
+
+```
