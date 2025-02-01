@@ -35,3 +35,45 @@ export function obtenerDatosPersonales(callback) {
 }
 
 ```
+
+3- explica ue hace la funcion. Identifica y corrige los errores en el siguiente codigo. Si vez algo innecesario, eliminalo. Luego mejoralo para que siga funcionando con callback y luego haz lo que consideres para mejorar su legibilidad.
+
+```javascript
+export function procesarArchivo() {
+  fs.readFile("input.txt", "utf8", (error, contenido) => {
+    if (error) {
+      console.error("Error leyendo archivo:", error.message);
+      return false;
+    }
+
+    setTimeout(() => {
+      const textoProcesado = contenido.toUpperCase();
+
+      fs.readFile("output.txt", textoProcesado, (error) => {
+        if (error) {
+          console.error("error guardando archivo:", error.message);
+          return false;
+        }
+
+        console.log("archivo procesado y guardado con exito");
+        return true;
+      });
+    }, 1000);
+  });
+}
+```
+
+4- ¿como mejorarias el siguiente codigo y porque? Arregla los test si es necesario
+
+```javascript
+import fs from "node:fs";
+
+export function leerArchivos() {
+  const archivo1 = fs.readSync("archivo1.txt", "utf8");
+  const archivo2 = fs.readSync("archivo1.txt", "utf8");
+  const archivo3 = fs.readSync("archivo1.txt", "utf8");
+
+  return `${archivo1} ${archivo2} ${archivo3}`;
+}
+leerArchivos();
+```

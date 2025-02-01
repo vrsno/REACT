@@ -1,5 +1,5 @@
-import { log } from "node:console";
 import net from "node:net";
+import fs from "node:fs"; // file system --> fs
 
 export const ping = (ip, callback) => {
   const startTime = process.hrtime();
@@ -49,3 +49,45 @@ export function obtenerDatosPromise() {
 // } catch (error) {
 //   console.error(error);
 // }
+
+//7 ejercico 3
+
+export function procesarArchivo(callback) {
+  fs.readFile("input.txt", "utf8", (error, contenido) => {
+    if (error) {
+      console.error("Error leyendo archivo:", error.message);
+      callback(error);
+    }
+
+    const textoProcesado = contenido.toUpperCase();
+
+    fs.writeFile("output.txt", textoProcesado, (error) => {
+      if (error) {
+        console.error("error guardando archivo:", error.message);
+        callback(error);
+      }
+
+      console.log("archivo procesado y guardado con exito");
+      callback(null);
+    });
+  });
+}
+
+// procesarArchivo(() => {
+//   console.log("esto ya funciona!!!");
+// });
+
+export async function procesarArchivoPromise() {
+  try {
+    const contenido = await fs.promises.readFile("input.txt", "utf8");
+    const textoProcesado = contenido.toUpperCase();
+    await fs.promises.writeFile("output.txt", textoProcesado);
+    console.log("Archivo procesado y guardado con éxito");
+  } catch (error) {
+    console.error("Error:", error.message);
+  }
+}
+
+//procesarArchivo().then(() => console.log("¡Esto ya funciona!"));
+
+//
