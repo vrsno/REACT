@@ -1,5 +1,6 @@
 import net from "node:net";
 import fs from "node:fs"; // file system --> fs
+import fsp from "node:fs/promises";
 
 export const ping = (ip, callback) => {
   const startTime = process.hrtime();
@@ -50,7 +51,7 @@ export function obtenerDatosPromise() {
 //   console.error(error);
 // }
 
-//7 ejercico 3
+//7 ejercicio 3
 
 export function procesarArchivo(callback) {
   fs.readFile("input.txt", "utf8", (error, contenido) => {
@@ -90,4 +91,27 @@ export async function procesarArchivoPromise() {
 
 //procesarArchivo().then(() => console.log("¡Esto ya funciona!"));
 
-//
+// ejercicio 4
+
+export async function leerArchivos() {
+  console.time("leerArchivos");
+  // en paralelo osea al mismo tiempo
+  // en cuanto mas pesen los archivos mejora el rendimiento
+  // si falla alguna promesa muestra undefined
+  const [archivo1, archivo2, archivo3] = await Promise.allSettled([
+    fsp.readFile("archivo1.txt", "utf8"),
+    fsp.readFile("archivo2.txt", "utf8"),
+    fsp.readFile("archivo3.txt", "utf8"),
+  ]);
+  console.log(archivo1);
+
+  // funciona en orden
+  // const archivo1 = await fs.promises.readFile("archivo1.txt", "utf8");
+  // const archivo2 = await fs.promises.readFile("archivo2.txt", "utf8");
+  // const archivo3 = await fs.promises.readFile("archivo3.txt", "utf8");
+  console.timeEnd("leerArchivos");
+  console.log(`${archivo1.value} ${archivo2.value} ${archivo3.value}`);
+
+  return `${archivo1.value} ${archivo2.value} ${archivo3.value}`;
+}
+// leerArchivos();
