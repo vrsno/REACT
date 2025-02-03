@@ -77,3 +77,55 @@ export function leerArchivos() {
 }
 leerArchivos();
 ```
+
+5- escribe una funcion `delay` que retorne una promesa que se resuelva despues de `n` milisegundos.
+por ejemplo:
+
+```javascript
+export async function delay ({
+  ///
+})
+
+delay(3000).then(()=> console.log('hola mundo'))
+// o
+
+await delay(3000)
+console.log('Hola mundo')
+```
+
+6- vamos a nuestra propia utilidad `dotenv` en el archivo `dotenv.js`
+
+- la utilidad debe devolver un metodo `config` que lee el archivo `.env` y añade las variables de entorno qye haya en el archivo al objeto `process.env`
+- por ejemplo si tu archivo `.env` contiene:
+
+```sh
+PORT=8000
+TOKEN='1223abc'
+```
+
+entonces podriamos hacer esto:
+
+```javascript
+const dotenv = require("./dotenv.js");
+dotenv.config();
+
+console.log(process.env.PORT); // 8000
+console.log(process.env.TOKEN); // 123abc
+```
+
+tambien se le puede pasar el pásh del archivo `.env` como parametro
+
+```javascript
+const dotenv = require("./dotenv.js");
+dotenv.config("./config/.env.local");
+```
+
+cosas a tener en cuenta
+
+- solo se permite usar el modulo `fs` para leer el archivo
+- si el archivo no existe, se debe dar error, simplemente no hace nada.
+- si el archivo existe, pero no tiene ninguna variable de entorno, no debe hacer nada
+- solo debe soportar `.env` o el que se le pasa como parametro, no hace falta soporte `.env.local`, `.env.development` y similares de forma automatica.
+- las variables de entorno siempre son strings, por lo que si en el archivo `.env` hay un numero, por ejemplo `PORT=8000`, al leerlo con `fs` y añadirlo a `process.env` debe ser un string, no un numero
+
+- `process.env` es un objeto y, por lo tanto, es mutable. esto significa que podemos añadir propiedades nuevas sin problemas.
