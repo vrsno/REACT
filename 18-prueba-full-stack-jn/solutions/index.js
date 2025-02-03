@@ -115,3 +115,10 @@ export async function leerArchivos() {
   return `${archivo1.value} ${archivo2.value} ${archivo3.value}`;
 }
 // leerArchivos();
+
+// ejercicio 6
+export async function delay(time) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, time);
+  });
+}
